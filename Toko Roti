@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sweet Crumbs Bakery - Toko roti modern dengan berbagai pilihan roti dan pastry lezat.">
+    <title>Sweet Crumbs Bakery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf5;
+            color: #3d2921;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 250, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #a6532c;
+        }
+
+        .logo span {
+            color: #e49a55;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #3d2921;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #c66a36;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 8% 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(135deg, #fff4e7, #ffe0bd);
+        }
+
+        .hero-text {
+            max-width: 580px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #fff;
+            color: #b65e32;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 75px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #c76735;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #70584c;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #a6532c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(166,83,44,0.3);
+        }
+
+        .btn-secondary {
+            border: 2px solid #a6532c;
+            color: #a6532c;
+        }
+
+        .btn-secondary:hover {
+            background: #a6532c;
+            color: white;
+        }
+
+        .hero-image {
+            width: min(480px, 100%);
+            height: 480px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #d9904e, #8d4428);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 180px;
+            box-shadow: 0 25px 60px rgba(100,50,20,0.25);
+        }
+
+        /* SECTION */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #c76735;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 8px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(80,40,20,0.08);
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(80,40,20,0.15);
+        }
+
+        .product-img {
+            height: 190px;
+            border-radius: 17px;
+            background: #f4d1a8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 85px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #806b5f;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #b55c31;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* PROMO */
+        .promo {
+            background: #3d2921;
+            color: white;
+            border-radius: 30px;
+            padding: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .promo h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .promo p {
+            color: #e8d5c8;
+        }
+
+        .promo .btn {
+            background: #e49a55;
+            color: #3d2921;
+            white-space: nowrap;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-box {
+            background: #f4d1a8;
+            min-height: 350px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 120px;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #70584c;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            padding: 12px 17px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: #fff0df;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #3d2921;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #d9c6bb;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                width: 330px;
+                height: 330px;
+                font-size: 120px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .promo {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .promo {
+                padding: 35px 25px;
+            }
+
+            .promo h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Sweet<span>Crumbs</span> 🥐</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <div class="badge">✨ Fresh From The Oven</div>
+
+            <h1>
+                Roti Lezat,<br>
+                <span>Hari Lebih Nikmat.</span>
+            </h1>
+
+            <p>
+                Nikmati berbagai roti dan pastry fresh yang dibuat
+                dengan bahan berkualitas dan penuh rasa.
+            </p>
+
+            <div class="buttons">
+                <a href="#produk" class="btn btn-primary">
+                    Lihat Produk →
+                </a>
+
+                <a href="#kontak" class="btn btn-secondary">
+                    Hubungi Kami
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            🥐
+        </div>
+    </section>
+
+    <!-- PRODUK -->
+    <section id="produk">
+
+        <div class="section-title">
+            <small>MENU FAVORIT</small>
+            <h2>Produk Pilihan Kami</h2>
+        </div>
+
+        <div class="products">
+
+            <div class="card">
+                <div class="product-img">🍞</div>
+                <h3>Roti Milk</h3>
+                <p>Roti lembut dengan rasa susu yang creamy.</p>
+                <div class="price">Rp8.000</div>
+            </div>
+
+            <div class="card">
+                <div class="product-img">🥐</div>
+                <h3>Croissant</h3>
+                <p>Croissant renyah dengan tekstur berlapis.</p>
+                <div class="price">Rp12.000</div>
+            </div>
+
+            <div class="card">
+                <div class="product-img">🍩</div>
+                <h3>Donat Cokelat</h3>
+                <p>Donat lembut dengan topping cokelat.</p>
+                <div class="price">Rp7.000</div>
+            </div>
+
+            <div class="card">
+                <div class="product-img">🧁</div>
+                <h3>Cupcake</h3>
+                <p>Cupcake lembut dengan cream yang manis.</p>
+                <div class="price">Rp10.000</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROMO -->
+    <section>
+        <div class="promo">
+            <div>
+                <h2>Promo Hari Ini! 🎉</h2>
+                <p>
+                    Beli 3 roti favoritmu dan dapatkan potongan harga spesial.
+                </p>
+            </div>
+
+            <a href="#kontak" class="btn">
+                Pesan Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang">
+
+        <div class="about">
+
+            <div class="about-box">
+                🍰
+            </div>
+
+            <div>
+                <small>KENAPA SWEET CRUMBS?</small>
+
+                <h2>Dibuat dengan kualitas dan rasa terbaik.</h2>
+
+                <p>
+                    Sweet Crumbs Bakery menghadirkan roti fresh setiap hari.
+                    Kami menggunakan bahan berkualitas untuk menghasilkan
+                    roti yang lembut, lezat, dan cocok dinikmati kapan saja.
+                </p>
+
+                <div class="features">
+                    <div class="feature">🍞 Fresh</div>
+                    <div class="feature">⭐ Berkualitas</div>
+                    <div class="feature">❤️ Dibuat dengan cinta</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="contact" id="kontak">
+
+        <div class="section-title">
+            <small>CONTACT US</small>
+            <h2>Pesan Roti Favoritmu</h2>
+        </div>
+
+        <p>
+            Hubungi kami untuk pemesanan atau informasi lebih lanjut.
+        </p>
+
+        <div class="contact-info">
+
+            <div class="contact-item">
+                📱 WhatsApp<br>
+                <strong>0812-3456-7890</strong>
+            </div>
+
+            <div class="contact-item">
+                📍 Lokasi<br>
+                <strong>Mojokerto, Jawa Timur</strong>
+            </div>
+
+            <div class="contact-item">
+                🕐 Buka<br>
+                <strong>07.00 - 21.00</strong>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Sweet Crumbs Bakery. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
